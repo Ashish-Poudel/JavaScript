@@ -58,12 +58,43 @@ const obj2={3:"a",4:"b"}
 const obj3 = Object.assign({},obj1,obj2)
 console.log(log3);
 
-const users = {
-    id:1,
-    email:"aashish@gmail.com",
+const course = (
+    cname:"JS",
+    price=999,
+    cins="AP"
+)
+const{cins:instructor}=course
+console.log(cins)
 
-}
-users[1].email
+
+// {
+//     name:"Aashish",
+//     cname:"JS",
+//     price:"free"
+// }
+
+[
+    {},
+    {},
+    {}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
