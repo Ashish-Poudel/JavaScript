@@ -50,7 +50,24 @@ const regularUser = {
         }
     }
 }
-console.log(regularUser.fullname)
+// console.log(regularUser.fullname)
+
+const obj1={1:"a",2:"b"}
+const obj2={3:"a",4:"b"}
+
+const obj3 = Object.assign({},obj1,obj2)
+console.log(log3);
+
+const users = {
+    id:1,
+    email:"aashish@gmail.com",
+
+}
+users[1].email
+
+
+
+
 
 
 
