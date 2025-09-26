@@ -20,7 +20,6 @@ h1 {
   color: #333;
 }
 
-/* Form Styles */
 form div {
   margin-bottom: 15px;
 }
@@ -55,7 +54,6 @@ button.btn:hover {
   background-color: #45a049;
 }
 
-/* Table Styles */
 .table {
   margin-top: 30px;
   border-top: 2px solid #ddd;
@@ -78,7 +76,6 @@ button.btn:hover {
   padding: 5px 10px;
 }
 
-/* Buttons inside table */
 .table-section button {
   padding: 5px 10px;
   margin-right: 5px;
@@ -102,7 +99,6 @@ button.btn:hover {
   color: white;
 }
 
-/* Add New Book Button on booklist page */
 button {
   background-color: #ff9800;
   color: white;
