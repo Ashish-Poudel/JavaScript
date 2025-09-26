@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Book</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="container">
+    <h1>Add a Book</h1>
+    <form id="book-form">
+      <div>
+        <label for="title">Book Title</label>
+        <input type="text" id="title" />
+      </div>
+      <div>
+        <label for="author">Book Author</label>
+        <input type="text" id="author" />
+      </div>
+      <div>
+        <label for="year">Published Year</label>
+        <input type="number" id="year" />
+      </div>
+      <button type="submit" class="btn">Add Book</button>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById("book-form");
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const year = document.getElementById("year");
+
+    // Get books from localStorage or start empty
+    let books = JSON.parse(localStorage.getItem("books")) || [];
+    let editIndex = null; // Track which book is being edited
+
+    // Check if editing
+    const savedEditIndex = localStorage.getItem("editIndex");
+    if (savedEditIndex !== null) {
+      editIndex = Number(savedEditIndex);
+      const bookToEdit = books[editIndex];
+      title.value = bookToEdit.title;
+      author.value = bookToEdit.author;
+      year.value = bookToEdit.year;
+
+      localStorage.removeItem("editIndex"); // Clear after loading
+    }
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const titleValue = title.value.trim();
+      const authorValue = author.value.trim();
+      const yearValue = year.value.trim();
+
+      if (!titleValue || !authorValue || !yearValue) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      const book = { title: titleValue, author: authorValue, year: yearValue };
+
+      if (editIndex !== null) {
+        // 🔹 UPDATE existing book
+        books[editIndex] = book;
+        editIndex = null;
+      } else {
+        // 🔹 CREATE new book
+        books.push(book);
+      }
+
+      // Save updated books array in localStorage
+      localStorage.setItem("books", JSON.stringify(books));
+
+      // Clear the form
+      form.reset();
+
+      // Redirect to book list page
+      window.location.href = "booklist.html";
+    });
+  </script>
+</body>
+</html>
