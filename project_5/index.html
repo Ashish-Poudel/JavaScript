@@ -34,9 +34,8 @@
 
     // Get books from localStorage or start empty
     let books = JSON.parse(localStorage.getItem("books")) || [];
-    let editIndex = null; // Track which book is being edited
+    let editIndex = null; 
 
-    // Check if editing
     const savedEditIndex = localStorage.getItem("editIndex");
     if (savedEditIndex !== null) {
       editIndex = Number(savedEditIndex);
@@ -45,7 +44,7 @@
       author.value = bookToEdit.author;
       year.value = bookToEdit.year;
 
-      localStorage.removeItem("editIndex"); // Clear after loading
+      localStorage.removeItem("editIndex");
     }
 
     form.addEventListener("submit", function(e) {
@@ -63,18 +62,17 @@
       const book = { title: titleValue, author: authorValue, year: yearValue };
 
       if (editIndex !== null) {
-        // 🔹 UPDATE existing book
+        // UPDATE
         books[editIndex] = book;
         editIndex = null;
       } else {
-        // 🔹 CREATE new book
+        //CREATE
         books.push(book);
       }
 
-      // Save updated books array in localStorage
+      // Saving updated books array in localStorage
       localStorage.setItem("books", JSON.stringify(books));
 
-      // Clear the form
       form.reset();
 
       // Redirect to book list page
